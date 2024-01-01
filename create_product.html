@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DreamStore | ADD PRODUCT</title>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+          crossorigin="anonymous">
+  </script>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+          integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+          crossorigin="anonymous">
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+        crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/index.css">
+  <script src="js/index.js" defer></script>
+  <script src="js/create_product.js" defer></script>
+</head>
+
+<body>
+<div class="container-fluid h-100">
+  <div class="row align-items-center justify-content-center h-100 bg-dark bg-opacity-25">
+    <div class="col-auto" style="width: 90%;">
+      <div class="card shadow-2-strong" style="border-radius: 1rem;">
+        <div class="card-body p-4 text-center">
+          <input id="product-image" type="file" name="product-image" class="visually-hidden" />
+          <form id="product-form" class="needs-validation" novalidate>
+            <div class="text-end">
+              <a type="button" class="btn btn-sm btn-danger me-2" href="index.html">
+                Cancel
+              </a>
+            </div>
+            <h3 class="mb-4">Add New Product</h3>
+            <div class="row">
+              <div class="form-outline mb-4 col-6">
+                <label class="form-label text-start w-100" for="name">Name</label>
+                <input type="text" id="name" name="name" class="form-control form-control-lg" required/>
+                <div class="invalid-feedback">Please enter name.</div>
+              </div>
+              <div class="form-outline col-6">
+                <label class="form-label text-start w-100" for="price">Price</label>
+                <input type="number" id="price" name="price" class="form-control form-control-lg" required/>
+                <div class="invalid-feedback">Please enter price.</div>
+              </div>
+              <div class="form-outline col-3">
+                <label class="form-label text-start w-100" for="type">Type</label>
+                <select class="form-control-lg w-100 col-3" id="type"
+                        style="border: 1px solid #ced4da;" aria-label="Type Select">
+                  <option selected>Shirt</option>
+                </select>
+              </div>
+              <div class="form-outline col-7">
+                <label class="form-label text-start w-100" for="imagePath">Image (Use the upload button)</label>
+                <input type="text" id="imagePath" name="imagePath" class="form-control form-control-lg" required/>
+                <div class="invalid-feedback">Please Upload Image.</div>
+              </div>
+              <div class="col-2 pt-2">
+                <button id="uploadBtn" class="btn btn-primary btn-lg btn-block mt-4" type="button">Upload</button>
+                <input type="file" id="upload-image" style="display:none">
+              </div>
+              <div class="form-outline mt-4 col-12">
+                <label class="form-label text-start w-100" for="description">Description</label>
+                <textarea type="text" class="form-control" id="description" placeholder="Enter Description"
+                          name="description" required></textarea>
+                <div class="invalid-feedback">Please enter description.</div>
+              </div>
+            </div>
+            <div class="text-danger mt-4" id="error-feedback">XX</div>
+            <button class="btn btn-primary btn-lg btn-block mt-4" type="submit">Save Product</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>

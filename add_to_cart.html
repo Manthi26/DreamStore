@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DreamStore | ADD PRODUCT</title>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+          crossorigin="anonymous">
+  </script>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+          integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+          crossorigin="anonymous">
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+        crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/index.css">
+  <script src="js/index.js" defer></script>
+  <script src="js/add_to_cart.js" defer></script>
+</head>
+
+<body>
+<div class="container-fluid h-100">
+  <div class="row align-items-center justify-content-center h-100 bg-dark bg-opacity-25">
+    <div class="col-auto" style="width: 90%;">
+      <div class="card shadow-2-strong" style="border-radius: 1rem;">
+        <div class="col-12 row mt-3">
+          <h3 class="mb-0 ms-4 col text-start" id="product-title"></h3>
+          <div class="text-end col">
+            <a type="button" class="btn btn-sm btn-danger me-2" href="index.html">
+              Cancel
+            </a>
+          </div>
+        </div>
+        <div class="card-body p-4 text-center row">
+          <div class="col-4">
+            <div class="card-img" style="height: fit-content">
+              <img id="product-img" alt=""/>
+            </div>
+            <div class="mt-4" style="text-align: justify" id="product-desc"></div>
+          </div>
+          <div class="col-8">
+          <form id="add-to-cart-form" class="needs-validation" novalidate>
+            <div class="row">
+              <div class="col-7 row">
+                <div class="form-outline mb-3 col-6">
+                  <label class="form-label text-start w-100" for="shoulders">Shoulders (cm)</label>
+                  <input type="number" id="shoulders" name="shoulders" class="form-control form-control-lg" min="1" step="0.01" required/>
+                  <div class="invalid-feedback">Please enter length.</div>
+                </div>
+                <div class="form-outline mb-3 col-6">
+                  <label class="form-label text-start w-100" for="chest">Chest (cm)</label>
+                  <input type="number" id="chest" name="chest" class="form-control form-control-lg" min="1" step="0.01" required/>
+                  <div class="invalid-feedback">Please enter length.</div>
+                </div>
+                <div class="form-outline mb-3 col-6">
+                  <label class="form-label text-start w-100" for="sleeve">Sleeve (Short or Long)(cm)</label>
+                  <input type="number" id="sleeve" name="sleeve" class="form-control form-control-lg" min="1" step="0.01" required/>
+                  <div class="invalid-feedback">Please enter length.</div>
+                </div>
+                <div class="form-outline mb-3 col-6">
+                  <label class="form-label text-start w-100" for="waist">Waist (cm)</label>
+                  <input type="number" id="waist" name="waist" class="form-control form-control-lg" min="1" step="0.01" required/>
+                  <div class="invalid-feedback">Please enter length.</div>
+                </div>
+                <div class="form-outline col-6">
+                  <label class="form-label text-start w-100" for="centerBack">Center Back (cm)</label>
+                  <input type="number" id="centerBack" name="centerBack" class="form-control form-control-lg" min="1" step="0.01" required/>
+                  <div class="invalid-feedback">Please enter length.</div>
+                </div>
+                <div class="col-2">
+                </div>
+                <div class="form-outline col-4">
+                  <label class="form-label text-start w-100" for="quantity">Quantity</label>
+                  <input type="number" id="quantity" name="quantity" class="form-control form-control-lg" value="1" min="1" required/>
+                  <div class="invalid-feedback">Please enter quantity.</div>
+                </div>
+                <div class="col-12">
+                  <div class="text-danger mt-4" id="error-feedback">XX</div>
+                  <button class="btn btn-primary btn-lg btn-block mt-4" type="submit">Add To Cart</button>
+                </div>
+              </div>
+              <div class="col-5">
+                <div class="bg-white">
+                  <img src="img/size-guide.png" alt="" style="height: 230px; width: 300px;"/>
+                </div>
+              </div>
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>
