@@ -10,13 +10,13 @@
             let userObj = JSON.parse(user);
             if (userObj.username && userObj.username.trim() !== "") {
                 $('#nav_logout').show();
-
                 if (userObj.type === "A") {
-                    //productsBtn.show();
                 } else if (userObj.type === "G") {
-                    //ordersBtn.show();
+                    alert("You are not allowed to access this page!")
+                    window.location.href = 'index.html';
                 } else if (userObj.type === "U") {
-                    //cartBtn.show();
+                    alert("You are not allowed to access this page!")
+                    window.location.href = 'index.html';
                 }
             }
         } else {
@@ -37,21 +37,20 @@ function loadData() {
         if (userObj.username && userObj.username.trim() !== "") {
             // Load data from backend
             $.ajax({
-                url: 'backend/fetchItemsForUser.php',
-                type: 'POST',
-                data: {'username': userObj.username.trim()},
+                url: 'backend/fetchItemsForAdmin.php',
+                type: 'GET',
                 success: function (result) {
-                    let cartData = [];
-                    let orderData = [];
+                    let pendingOrders = [];
+                    let previousOrders = [];
                     $.each(result, (index, item) => {
-                        if (item.status == "C") {
-                            cartData.push(item);
+                        if (item.status === "S") {
+                            pendingOrders.push(item);
                         } else {
-                            orderData.push(item);
+                            previousOrders.push(item);
                         }
                     })
-                    createCartTable(cartData, userObj.type);
-                    createOrderTable(orderData, userObj.type);
+                    createToBeShippedTable(pendingOrders, userObj.type);
+                    createAllOrdersTable(previousOrders, userObj.type);
                 },
                 error: function (error) {
                     console.error(error);
@@ -62,8 +61,8 @@ function loadData() {
     }
 }
 
-function createCartTable(result, userType) {
-    let $el = $('#cart-container');
+function createToBeShippedTable(result, userType) {
+    let $el = $('#tobe-shipped-container');
     $el.empty();
     // dynamically create cloth card
     $.each(result, (index, item) => {
@@ -78,15 +77,15 @@ function createCartTable(result, userType) {
             '            <td class="text-center align-middle"><b>' + item.waist + '</b> cm</td>' +
             '            <td class="text-center align-middle"><b>' + item.center_back + '</b> cm</td>' +
             '            <td class="text-center align-middle">' +
-            '                <button class="btn btn-danger btn-sm" type="button" onclick="deleteFromCart(\'C\', \''+ item.seq_id +'\')">REMOVE</button>' +
+            '                <button class="btn btn-primary btn-sm" type="button" onclick="markOrderByAdmin(\'' + item.seq_id + '\', \'D\')">Mark as Shipped</button>' +
             '            </td>' +
             '        </tr>'
         );
     })
 }
 
-function createOrderTable(result, userType) {
-    let $el = $('#order-container');
+function createAllOrdersTable(result, userType) {
+    let $el = $('#all_orders-container');
     $el.empty();
     // dynamically create cloth card
     $.each(result, (index, item) => {
@@ -105,59 +104,28 @@ function createOrderTable(result, userType) {
             '                   <option value="pending" ' + (item.status === "P" ? "selected" : "") + '>Waiting for Tailor</option>' +
             '                   <option value="processing" ' + (item.status === "R" ? "selected" : "") + '>Rejected By Tailor</option>' +
             '                   <option value="processing" ' + (item.status === "T" ? "selected" : "") + '>Processing By Tailor</option>' +
-            '                   <option value="completed" ' + (item.status === "S" ? "selected" : "") + '>Waiting to be Shipped</option>' +
+            '                   <option value="shipped" ' + (item.status === "S" ? "selected" : "") + '>Waiting to be Shipped</option>' +
             '                   <option value="completed" ' + (item.status === "D" ? "selected" : "") + '>Shipped</option>' +
-            '               </select>' + (item.status === "R" ?
-            '                <div>please check and place another order</div>'+
-            '                <button class="btn btn-secondary btn-sm mt-1" type="button" onclick="deleteFromCart(\'R\', \''+ item.seq_id +'\')">Remove Order</button>' : "") +
+            '               </select>' +
             '            </td>' +
             '        </tr>'
         );
     })
 }
 
-function deleteFromCart(status, orderId) {
-    $.ajax({
-        url: 'backend/deleteCartItemById.php',
-        type: 'POST',
-        data: {'status' : status, 'orderId' : orderId},
-        success: function (result) {
-            loadData();
-        },
-        error: function (error) {
-            console.error(error);
-            alert("An error occurred. Please try again later.");
-        }
-    });
-}
-
-function placeOrder() {
-    let $el = $('#cart-container');
-    if (!$el.html() || $el.html().trim() === "") {
-        alert('Please add items to cart first!');
-    } else if (confirm('Are you sure to place order?')) {
-        let user = sessionStorage.getItem("dream_store_user");
-        if (user && user.trim() !== "") {
-            let userObj = JSON.parse(user);
-            if (userObj.username && userObj.username.trim() !== "") {
-                $.ajax({
-                    url: 'backend/placeOrder.php',
-                    type: 'POST',
-                    data: {
-                        username: userObj.username
-                    },
-                    success: function (result) {
-                        if (result === '0') {
-                            alert('Order placed successfully.');
-                        } else {
-                            alert('An error occurred. Please try again later.');
-                        }
-                        loadData();
-                    }
-                });
-            } else {
-                alert('An error occurred. Please try again later.');
+function markOrderByAdmin(orderId, status) {
+    if (confirm("Are you sure to mark this as shipped?")) {
+        $.ajax({
+            url: 'backend/markOrderCompleted.php',
+            type: 'POST',
+            data: {'status': status, 'orderId': orderId},
+            success: function (result) {
+                loadData();
+            },
+            error: function (error) {
+                console.error(error);
+                alert("An error occurred. Please try again later.");
             }
-        }
+        });
     }
 }

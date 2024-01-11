@@ -25,15 +25,18 @@
             if (userObj.username && userObj.username.trim() !== "") {
                 let cartBtn = $('#cart_btn');
                 let ordersBtn = $('#orders_btn');
+                let adminOrdersBtn = $('#admin_orders_btn');
                 let productsBtn = $('#products_btn');
                 cartBtn.hide();
                 ordersBtn.hide();
+                adminOrdersBtn.hide();
                 productsBtn.hide();
                 $('#nav_logout').show();
                 $('#nav_login').hide();
 
                 if (userObj.type === "A") {
                     productsBtn.show();
+                    adminOrdersBtn.show();
                 } else if (userObj.type === "G") {
                    ordersBtn.show();
                 } else if (userObj.type === "U") {

@@ -130,7 +130,7 @@ function markOrderByTailor(orderId, status) {
     }
     if (confirm(message)) {
         $.ajax({
-            url: 'backend/tailorCompleted.php',
+            url: 'backend/markOrderCompleted.php',
             type: 'POST',
             data: {'status': status, 'orderId': orderId},
             success: function (result) {

@@ -6,7 +6,7 @@ include 'model/Order.php';
 $db = getDatabaseConnection();
 
 $stmt = $db->prepare("SELECT `order`.*, product.name, product.image_path FROM `order` 
-    JOIN product ON `order`.product_id = product.id WHERE status != 'C' AND `order`.username != 'admin'");
+    JOIN product ON `order`.product_id = product.id WHERE status != 'C'");
 
 $stmt->execute();
 

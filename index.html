@@ -21,7 +21,16 @@
 
 <body>
 <div class="container-fluid m-0 py-3 row" style="background-color: #51fdd5">
-    <div class="col-4"></div>
+    <div class="col-4">
+        <a type="button" class="btn btn-primary me-2 mt-1" href="create_product.html" id="products_btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                 class="bi bi-search mb-1 me-1" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+            </svg>
+            Add Product
+        </a>
+    </div>
     <div class="col-4 fs-2 fw-bold text-center">
         <a href="index.html" class="text-decoration-none text-black">~ Dream Store ~</a>
     </div>
@@ -60,13 +69,11 @@
             </svg>
             Orders
         </a>
-        <a type="button" class="btn btn-primary me-2 mt-1" href="create_product.html" id="products_btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                 class="bi bi-search mb-1 me-1" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+        <a type="button" class="btn btn-primary me-2 mt-1" href="adminOrders.html" id="admin_orders_btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-inbox mb-1 me-1" viewBox="0 0 16 16">
+                <path d="M4.98 4a.5.5 0 0 0-.39.188L1.54 8H6a.5.5 0 0 1 .5.5 1.5 1.5 0 1 0 3 0A.5.5 0 0 1 10 8h4.46l-3.05-3.812A.5.5 0 0 0 11.02 4zm9.954 5H10.45a2.5 2.5 0 0 1-4.9 0H1.066l.32 2.562a.5.5 0 0 0 .497.438h12.234a.5.5 0 0 0 .496-.438zM3.809 3.563A1.5 1.5 0 0 1 4.981 3h6.038a1.5 1.5 0 0 1 1.172.563l3.7 4.625a.5.5 0 0 1 .105.374l-.39 3.124A1.5 1.5 0 0 1 14.117 13H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .106-.374z"/>
             </svg>
-            Add Product
+            Orders
         </a>
         <div type="button" class="btn btn-primary me-2 mt-1"
              onclick="sessionStorage.removeItem('dream_store_user'); location.reload();">
@@ -84,32 +91,6 @@
 <div class="container-fluid px-5 mt-4 pb-4">
     <div class="row g-4" id="cloth-container">
         <!-- CLOTHS WILL GET ADDED HERE VIA JQUERY -->
-
-        <!--<div class="col-3">
-            <div class="card">
-                <div class="card-img">
-                    <img src="backend/uploads/1.jpg" alt=""/>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">NAME</h5>
-                    <div class="card-text">
-                        <div class="text-limit">
-                            DESC savsdvds  dfsdf ds fdsfsd fsdfsdf DESC savsdvds  dfsdf ds fdsfsd fsdfsdf DESC savsdvds  dfsdf ds fdsfsd fsdfsdf DESC savsdvds  dfsdf ds fdsfsd fsdfsdf
-                        </div>
-                        <div class="row px-3 mt-3 mb-0">
-                            <button class="btn btn-outline-danger btn-sm">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                     class="bi bi-trash" viewBox="0 0 16 16">
-                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>-->
-
     </div>
 </div>
 </body>
