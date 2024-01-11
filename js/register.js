@@ -10,7 +10,6 @@ regForm.submit(function () {
     if (regForm[0].checkValidity()) {
         let passwordFieldValue = $('#password').val();
         if (!passwordFieldValue || passwordFieldValue.trim() === "" || (passwordFieldValue !== $('#confPassword').val())) {
-            console.error('here')
             feedbackDiv.text("Please make sure that passwords match.");
             feedbackDiv.show();
         } else {

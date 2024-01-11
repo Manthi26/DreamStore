@@ -52,8 +52,6 @@
         let userObj = JSON.parse(user);
         if (userObj.username && userObj.username.trim() !== "") {
                 // Load data from backend
-            console.error("HERE")
-            console.error(userObj.type)
                 $.ajax({
                     url: 'backend/fetchAllProducts.php',
                     type: 'GET',
@@ -92,7 +90,6 @@ function deleteById(id) {
                 product_id: id
             },
             success: function(result) {
-                console.error(result)
                 if (result === '0') {
                     alert('Product deleted successfully.');
                     window.location.href = 'index.html';

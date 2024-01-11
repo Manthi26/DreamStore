@@ -6,7 +6,6 @@
     // Hide login and show logout if user is available
     try {
         let user = sessionStorage.getItem("dream_store_user");
-        console.error(user)
         if (user && user.trim() !== "") {
             let userObj = JSON.parse(user);
             if (userObj.username && userObj.username.trim() !== "") {
@@ -45,7 +44,6 @@ function loadData() {
                     let cartData = [];
                     let orderData = [];
                     $.each(result, (index, item) => {
-                        console.error(item)
                         if (item.status == "C") {
                             cartData.push(item);
                         } else {
@@ -116,13 +114,11 @@ function createOrderTable(result, userType) {
 }
 
 function deleteFromCart(orderId) {
-    console.error(orderId)
     $.ajax({
         url: 'backend/deleteCartItemById.php',
         type: 'POST',
         data: {'orderId' : orderId},
         success: function (result) {
-            console.error(result)
             loadData();
         },
         error: function (error) {
@@ -134,7 +130,6 @@ function deleteFromCart(orderId) {
 
 function placeOrder() {
     let $el = $('#cart-container');
-    console.error($el.html())
     if (!$el.html() || $el.html().trim() === "") {
         alert('Please add items to cart first!');
     } else if (confirm('Are you sure to place order?')) {
@@ -149,7 +144,6 @@ function placeOrder() {
                         username: userObj.username
                     },
                     success: function (result) {
-                        console.error(result)
                         if (result === '0') {
                             alert('Order placed successfully.');
                         } else {

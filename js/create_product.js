@@ -21,7 +21,6 @@ $("#upload-image").on("change", function() {
     let file = $('#upload-image').prop('files')[0];
     let fileType = file["type"];
     let validImageTypes = ["image/gif", "image/jpeg", "image/png"];
-    console.error($.inArray(fileType, validImageTypes) > 0)
     if ($.inArray(fileType, validImageTypes) > 0) {
         let formData = new FormData();
         formData.append('file', file);
