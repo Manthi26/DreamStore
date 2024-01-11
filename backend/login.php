@@ -1,7 +1,7 @@
 <?php
 
 include 'db_connection.php';
-include 'User.php';
+include 'model/User.php';
 
 $db = getDatabaseConnection();
 

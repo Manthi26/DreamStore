@@ -92,8 +92,15 @@ function deleteById(id) {
                 product_id: id
             },
             success: function(result) {
-                alert('Product deleted successfully.');
-                window.location.href = 'index.html';
+                console.error(result)
+                if (result === '0') {
+                    alert('Product deleted successfully.');
+                    window.location.href = 'index.html';
+                } else if (result === '1') {
+                    alert('Could not delete this product as there are orders!');
+                } else {
+                    alert('An error occurred. Please try again later.');
+                }
             }
         });
     }
@@ -114,9 +121,8 @@ function addToCart(id) {
 }
 
 function createItems(result, userType) {
-    console.error(result)
-    let $el = $('#movie-container');
-    // dynamically create movie card
+    let $el = $('#cloth-container');
+    // dynamically create cloth card
     $.each(result, (index, item) => {
         $el.append(
             '<div class="col-3">' +

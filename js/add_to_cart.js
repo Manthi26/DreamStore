@@ -13,7 +13,6 @@ const params = new URLSearchParams(document.location.search);
             document.getElementById("product-img").src = 'backend/uploads/' + result.imagePath;
             document.getElementById('product-title').innerHTML = result.name;
             document.getElementById('product-desc').innerHTML = result.description;
-            console.error(result)
         },
         error: function (error) {
             console.error(error);
