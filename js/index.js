@@ -43,9 +43,14 @@
                     cartBtn.show();
                 }
             }
+        } else {
+            $('#nav_logout').hide();
+            $('#products_btn').hide();
+            $('#nav_login').show();
         }
     } catch (e) {
         $('#nav_logout').hide();
+        $('#products_btn').hide();
         $('#nav_login').show();
         console.error(e);
     }
